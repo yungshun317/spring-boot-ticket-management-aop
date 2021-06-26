@@ -22,6 +22,21 @@ public class HomeController {
     SecurityService securityService;
 
     @ResponseBody
+    @RequestMapping("")
+    public Map<String, Object> test() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("result", "Aloha");
+
+        _logger.trace("{test} trace");
+        _logger.debug("{test} debug");
+        _logger.info("{test} info");
+        _logger.warn("{test} warn");
+        _logger.error("{test} error");
+
+        return map;
+    }
+
+    @ResponseBody
     @RequestMapping("/test/aop/with/execution")
     public Map<String, Object> testAOPExecution() {
         Map<String, Object> map = new LinkedHashMap<>();
