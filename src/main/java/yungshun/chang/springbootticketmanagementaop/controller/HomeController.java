@@ -46,4 +46,16 @@ public class HomeController {
 
         return map;
     }
+
+    @ResponseBody
+    @RequestMapping("/security/get/subject")
+    public Map<String, Object> getSubject(@RequestParam(value="token") String token) {
+
+        String subject = securityService.getSubject(token);
+
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("result", subject);
+
+        return map;
+    }
 }
