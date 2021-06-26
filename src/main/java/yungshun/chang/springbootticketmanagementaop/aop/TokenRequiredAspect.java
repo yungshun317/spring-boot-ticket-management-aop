@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import yungshun.chang.springbootticketmanagementaop.service.SecurityServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
@@ -34,7 +35,7 @@ public class TokenRequiredAspect {
         }
         Claims claims = Jwts.parser()
                 .setSigningKey(DatatypeConverter.parseBase64Binary(SecurityServiceImpl.secretKey))
-                .parseClaimsJwts(tokenInHeader)
+                .parseClaimsJws(tokenInHeader)
                 .getBody();
         if (claims == null || claims.getSubject() == null) {
             throw new IllegalArgumentException("Token Error : Claim is null");
