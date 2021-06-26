@@ -19,4 +19,15 @@ public class HomeController {
 
         return map;
     }
+
+    @ResponseBody
+    @RequestMapping("/test/aop/with/annotation")
+    public Map<String, Object> testAOPAnnotation() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("result", "Aloha");
+
+        return map;
+    }
+
+
 }

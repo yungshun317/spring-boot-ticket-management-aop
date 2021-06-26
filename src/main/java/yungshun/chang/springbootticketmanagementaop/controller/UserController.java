@@ -2,6 +2,7 @@ package yungshun.chang.springbootticketmanagementaop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import yungshun.chang.springbootticketmanagementaop.aop.TokenRequired;
 import yungshun.chang.springbootticketmanagementaop.model.User;
 import yungshun.chang.springbootticketmanagementaop.service.UserService;
 
@@ -49,6 +50,7 @@ public class UserController {
     }
 
     @ResponseBody
+    @TokenRequired
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Map<String, Object> deleteUser(@PathVariable("id") Integer userid) {
         Map<String, Object> map = new LinkedHashMap<>();
